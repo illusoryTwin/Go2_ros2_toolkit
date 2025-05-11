@@ -41,6 +41,7 @@
     <material name="black" rgba="0 0 0 1" />
     <material name="white" rgba="1 1 1 1" />
     <material name="gray" rgba="0.671705 0.692426 0.774270 1" />
+    <material name="transparent" rgba="1 1 1 0.01" />
 
     <mesh file="base_0.obj" />
     <mesh file="base_1.obj" />
@@ -105,7 +106,8 @@
               type="cylinder" class="collision" />
             <geom pos="0 0 -0.213" mesh="foot" class="visual" material="black" />
             <geom name="FL" class="foot" />
-            <body name="FL_foot" pos="0 0 -0.213" />
+            <site name="FL_touch" pos="0 0 -0.213" size="0.027" material="transparent"/>
+            <body name="FL_foot" pos="0 0 -0.213"/>
           </body>
         </body>
       </body>
@@ -140,7 +142,8 @@
               type="cylinder" class="collision" />
             <geom pos="0 0 -0.213" mesh="foot" class="visual" material="black" />
             <geom name="FR" class="foot" />
-            <body name="FR_foot" pos="0 0 -0.213" />
+            <site name="FR_touch" pos="0 0 -0.213" size="0.027" material="transparent"/>
+            <body name="FR_foot" pos="0 0 -0.213"/>
           </body>
         </body>
       </body>
@@ -175,6 +178,7 @@
               type="cylinder" class="collision" />
             <geom pos="0 0 -0.213" mesh="foot" class="visual" material="black" />
             <geom name="RL" class="foot" />
+            <site name="RL_touch" pos="0 0 -0.213" size="0.027" material="transparent"/>
             <body name="RL_foot" pos="0 0 -0.213" />
           </body>
         </body>
@@ -212,7 +216,8 @@
               type="cylinder" class="collision" />
             <geom pos="0 0 -0.213" mesh="foot" class="visual" material="black" />
             <geom name="RR" class="foot" />
-            <body name="RR_foot" pos="0 0 -0.213" />
+            <site name="RR_touch" pos="0 0 -0.213" size="0.027" material="transparent"/>
+            <body name="RR_foot" pos="0 0 -0.213"/>
           </body>
         </body>
       </body>
@@ -280,10 +285,15 @@
     
     <framepos name="frame_pos" objtype="site" objname="imu" />
     <framelinvel name="frame_vel" objtype="site" objname="imu" />
+
+    <touch name="FR_touch" site="FR_touch" />
+    <touch name="FL_touch" site="FL_touch" />
+    <touch name="RR_touch" site="RR_touch" />
+    <touch name="RL_touch" site="RL_touch" />
   </sensor>
 
   <keyframe>
-    <key name="home" qpos="0 0 0.27 1 0 0 0 0 0.9 -1.8 0 0.9 -1.8 0 0.9 -1.8 0 0.9 -1.8"
-      ctrl="0 0.9 -1.8 0 0.9 -1.8 0 0.9 -1.8 0 0.9 -1.8" />
+    <key name="home" qpos="0 0 0.1 1 0 0 0 0.3 1.5 -2.7 -0.15 1.2 -2.7 0.5 1.2 -2.7 -0.5 1.2 -2.7"
+         ctrl="0 0 0 0 0 0 0 0 0 0 0 0" />
   </keyframe>
 </mujoco>

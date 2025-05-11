@@ -103,6 +103,15 @@ void UnitreeSdk2Bridge::PublishLowStateGo()
             low_state_go_.imu_state().accelerometer()[2] = mj_data_->sensordata[dim_motor_sensor_ + 9];
         }
 
+        // foot contact sensor
+        if (have_touch_sensor_) {
+            low_state_go_.foot_force()[0] = mj_data_->sensordata[dim_motor_sensor_ + 16];
+            low_state_go_.foot_force()[1] = mj_data_->sensordata[dim_motor_sensor_ + 17];
+            low_state_go_.foot_force()[2] = mj_data_->sensordata[dim_motor_sensor_ + 18];
+            low_state_go_.foot_force()[3] = mj_data_->sensordata[dim_motor_sensor_ + 19];
+            // std::cout << "foot_force: " << low_state_go_.foot_force()[0] << " " << low_state_go_.foot_force()[1] << " " << low_state_go_.foot_force()[2] << " " << low_state_go_.foot_force()[3] << std::endl;
+        }
+
         if (js_)
         {
             GetWirelessRemote();
@@ -349,6 +358,10 @@ void UnitreeSdk2Bridge::CheckSensor()
         if (strcmp(name, "frame_pos") == 0)
         {
             have_frame_sensor_ = true;
+        }
+        if (strstr(name, "touch") != nullptr)
+        {
+            have_touch_sensor_ = true;
         }
     }
 

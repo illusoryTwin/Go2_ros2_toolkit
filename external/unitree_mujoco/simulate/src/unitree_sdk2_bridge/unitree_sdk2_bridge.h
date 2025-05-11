@@ -144,6 +144,7 @@ public:
 
     int have_imu_ = false;
     int have_frame_sensor_ = false;
+    bool have_touch_sensor_ = false;
     int idl_type_ = 0; // 0: unitree_go, 1: unitree_hg
 
 private:

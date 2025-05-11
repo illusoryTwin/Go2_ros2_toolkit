@@ -1,4 +1,22 @@
 # Introduction
+Differences with origin unitree mujoco repo:
+* Add foot force sensor
+  * c++ simulation
+  * python simulation
+* Modified keyframe qpos
+  * In simulation, use "Load key" button to reload the robot. 
+* Add new robot model:
+  * Unitree A1
+  * Unitree Aliengo
+  * Unitree Go1
+  * Xiaomi Cyberdog
+  * Deep Robotics Lite3
+  * Deep Robotics X30
+  * Anybotics Anymal B
+  * Anybotics Anymal C
+
+
+
 ## Unitree mujoco
 `unitree_mujoco` is a simulator developed based on `Unitree sdk2` and `mujoco`. Users can easily integrate the control programs developed with `Unitree_sdk2`, `unitree_ros2`, and `unitree_sdk2_python` into this simulator, enabling a seamless transition from simulation to physical development. The repository includes two versions of the simulator implemented in C++ and Python, with a structure as follows:
 ![](./doc/func.png)
@@ -42,7 +60,7 @@ git clone https://github.com/unitreerobotics/unitree_sdk2.git
 cd unitree_sdk2/
 mkdir build
 cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=/opt/unitree_robotics
+cmake ..
 sudo make install
 ```
 For more details, see: https://github.com/unitreerobotics/unitree_sdk2
@@ -53,9 +71,10 @@ sudo apt install libglfw3-dev libxinerama-dev libxcursor-dev libxi-dev
 ```
 ```bash
 git clone https://github.com/google-deepmind/mujoco.git
+cd mujoco
 mkdir build && cd build
 cmake ..
-make -j4
+make -j
 sudo make install
 ```
 Test:
@@ -70,6 +89,7 @@ sudo apt install libyaml-cpp-dev
 ```
 ### 2. Compile unitree_mujoco
 ```bash
+git clone https://github.com/legubiao/unitree_mujoco
 cd unitree_mujoco/simulate
 mkdir build && cd build
 cmake ..

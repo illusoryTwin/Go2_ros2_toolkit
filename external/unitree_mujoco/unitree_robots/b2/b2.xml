@@ -16,6 +16,8 @@
   </default>
 
   <asset>
+    <material name="transparent" rgba="1 1 1 0.01" />
+
     <mesh name="base_link" file="base_link.obj"/>
     <mesh name="logo_left" file="logo_left.obj"/>
     <mesh name="logo_right" file="logo_right.obj"/>
@@ -89,6 +91,7 @@
             <geom size="0.025 0.014 0.0175" pos="0.023 0 -0.31" quat="0.540302 0 0.841471 0" type="box" rgba="0.7 0.7 0.7 1" class="collision"/>
             <geom pos="0 8.6986e-05 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.15 0.15 0.15 1" mesh="FL_foot" friction="0.4 0.005 0.0001"/>
             <geom size="0.032" pos="0 8.6986e-05 -0.35" quat="0.707388 0.706825 0 0" type="sphere" rgba="0.15 0.15 0.15 1" class="collision" friction="0.4 0.005 0.0001"/>
+            <site name="FL_touch" pos="0 8.6986e-05 -0.35" size="0.035" material="transparent"/>
           </body>
         </body>
       </body>
@@ -113,6 +116,7 @@
             <geom size="0.025 0.014 0.0175" pos="0.023 0 -0.31" quat="0.540302 0 0.841471 0" type="box" rgba="0.7 0.7 0.7 1" class="collision"/>
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.15 0.15 0.15 1" mesh="FR_foot" friction="0.4 0.005 0.0001"/>
             <geom size="0.032" pos="0 8.6986e-05 -0.35" quat="0.707388 0.706825 0 0" type="sphere" rgba="0.15 0.15 0.15 1" class="collision" friction="0.4 0.005 0.0001"/>
+            <site name="FR_touch" pos="0 8.6986e-05 -0.35" size="0.035" material="transparent"/>
           </body>
         </body>
       </body>
@@ -137,6 +141,7 @@
             <geom size="0.025 0.014 0.0175" pos="0.023 0 -0.31" quat="0.540302 0 0.841471 0" type="box" rgba="0.7 0.7 0.7 1" class="collision"/>
             <geom pos="0 8.6986e-05 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.15 0.15 0.15 1" mesh="RL_foot" friction="0.4 0.005 0.0001"/>
             <geom size="0.032" pos="0 8.6986e-05 -0.35" quat="0.707388 0.706825 0 0" type="sphere" rgba="0.15 0.15 0.15 1" class="collision" friction="0.4 0.005 0.0001"/>
+            <site name="RL_touch" pos="0 8.6986e-05 -0.35" size="0.035" material="transparent"/>
           </body>
         </body>
       </body>
@@ -161,6 +166,7 @@
             <geom size="0.025 0.014 0.0175" pos="0.023 0 -0.31" quat="0.540302 0 0.841471 0" type="box" rgba="0.7 0.7 0.7 1" class="collision"/>
             <geom pos="0 -8.6984e-05 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.15 0.15 0.15 1" mesh="RR_foot" friction="0.4 0.005 0.0001"/>
             <geom size="0.032" pos="0 8.6986e-05 -0.35" quat="0.707388 0.706825 0 0" type="sphere" rgba="0.15 0.15 0.15 1" class="collision" friction="0.4 0.005 0.0001"/>
+            <site name="RR_touch" pos="0 8.6986e-05 -0.35" size="0.035" material="transparent"/>
           </body>
         </body>
       </body>
@@ -228,11 +234,16 @@
     
     <framepos name="frame_pos" objtype="site" objname="imu" />
     <framelinvel name="frame_vel" objtype="site" objname="imu" />
+
+    <touch name="FR_touch" site="FR_touch" />
+    <touch name="FL_touch" site="FL_touch" />
+    <touch name="RR_touch" site="RR_touch" />
+    <touch name="RL_touch" site="RL_touch" />
   </sensor>
 
   <keyframe>
-    <key name="home" qpos="0 0 0.5 1 0 0 0 0 1.28 -2.84 0 1.28 -2.84 0 1.28 -2.84 0 1.28 -2.84"
-      ctrl="0 1.28 -2.84 0 1.28 -2.84 0 1.28 -2.84 0 1.28 -2.84"/>
+    <key name="home" qpos="0 0 0.12 1 0 0 0 0.5 1.2 -2.7 -0.5 1.2 -2.7 0.5 1.2 -2.7 -0.5 1.2 -2.7"
+         ctrl="0 0 0 0 0 0 0 0 0 0 0 0" />
   </keyframe>
 
 </mujoco>

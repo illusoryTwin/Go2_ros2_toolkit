@@ -11,6 +11,7 @@ from unitree_sdk2py.idl.unitree_go.msg.dds_ import WirelessController_
 from unitree_sdk2py.idl.default import unitree_go_msg_dds__SportModeState_
 from unitree_sdk2py.idl.default import unitree_go_msg_dds__WirelessController_
 from unitree_sdk2py.utils.thread import RecurrentThread
+import cyclonedds.idl.types as types
 
 import config
 if config.ROBOT=="g1":
@@ -55,6 +56,8 @@ class UnitreeSdk2Bridge:
                 self.have_imu_ = True
             if name == "frame_pos":
                 self.have_frame_sensor_ = True
+            if "touch" in name:
+                self.have_touch_sensor_ = True
 
         # Unitree sdk2 message
         self.low_state = LowState_default()
@@ -167,7 +170,22 @@ class UnitreeSdk2Bridge:
                 self.low_state.imu_state.accelerometer[2] = self.mj_data.sensordata[
                     self.dim_motor_sensor + 9
                 ]
-
+            
+            # foot force sensor
+            if self.have_touch_sensor_:
+                self.low_state.foot_force[0] = int(self.mj_data.sensordata[
+                    self.dim_motor_sensor + 16
+                ])
+                self.low_state.foot_force[1] = int(self.mj_data.sensordata[
+                    self.dim_motor_sensor + 17
+                ])
+                self.low_state.foot_force[2] = int(self.mj_data.sensordata[
+                    self.dim_motor_sensor + 18
+                ])
+                self.low_state.foot_force[3] = int(self.mj_data.sensordata[
+                    self.dim_motor_sensor + 19
+                ])
+                
             if self.joystick != None:
                 pygame.event.get()
                 # Buttons
