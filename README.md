@@ -1,4 +1,5 @@
-# Unofficial SDK for Quadruped Control (Unitree GO2)
+# Go2_ROS2 Toolkit 
+### Unofficial SDK for Quadruped Control (Unitree GO2)
 
 This repository provides an **unofficial SDK** for conducting experiments on control and navigation with the **Unitree GO2** quadruped robot.
 
@@ -10,7 +11,7 @@ This repository provides an **unofficial SDK** for conducting experiments on con
 To clone the repository **with submodules**, run the following:
 
 ```bash
-git clone --recurse-submodules https://github.com/illusoryTwin/Go2_ros2_toolkit 
+git clone --recurse-submodules https://github.com/illusoryTwin/go2_ros2_control_sim 
 
 git submodule update --init --recursive
 ```
@@ -18,13 +19,11 @@ git submodule update --init --recursive
 In the project root directory (`go2_ros2_control_sim`)
 
 ```bash
-source prelaunch.sh
-
-./main_launch.py
+make run
 ```
 
 After launching, new terminal windows should open for logging, keyboard input control, Mujoco simulation.
-The robot should appear in the Mujoco window.
+A Mujoco simulation window should open for visualizing the robot.
 
 ![Go2 spawning in MuJoCo](assets/go2_mujoco_spawn.png)
 
@@ -62,14 +61,23 @@ Launch utilities for starting the robot control system.
 
 provide a tool for processing the robot state data 
 
-### `prelaunch.sh`
-Sources the necessary environment variables and dependencies.
-
-### `main_launch.sh`
-Launches the main ROS nodes and associated launch files to control the robot.  
-A Mujoco simulation window should open for visualizing the robot.
+### `scripts/`
+Contain bash scripts for sourcing the necessary environment variables and dependencies and launch of the main ROS nodes and associated launch files to control the robot.  
 
 ---
+
+When simulation is launched the data from topics is saved as a rosbag. To further analyze this dadta, one can  launch 
+
+```bash
+cd utils
+python3 plot_data.py
+```
+
+Example of output plot should be as follows:
+
+![IMU and acceleration](assets/IMU_acc_vs_time.png)
+![IMU and angular velocity](assets/IMU_ang_vel_vs_time.png)
+
 
 ## Notes
 

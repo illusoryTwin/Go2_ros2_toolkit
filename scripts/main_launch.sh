@@ -4,8 +4,8 @@ set -e  # Exit immediately if a command fails
 
 # Open first terminal and run ROS 2 workspace commands
 gnome-terminal -- bash -c "
-source prelaunch.sh;
-./bringup_launch.sh;
+source scripts/prelaunch.sh;
+./scripts/bringup_launch.sh;
 exec bash
 "
 
