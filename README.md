@@ -2,13 +2,16 @@
 
 This repository provides an **unofficial SDK** for conducting experiments on control and navigation with the **Unitree GO2** quadruped robot.
 
+![Unitree Go2 Robot](assets/go2.png)
+
 ---
 ## Launch instructions:
 
 To clone the repository **with submodules**, run the following:
 
 ```bash
-git clone --recurse-submodules https://github.com/your-username/go2_ros2_control_sim.git
+git clone --recurse-submodules https://github.com/illusoryTwin/Go2_ros2_toolkit 
+
 git submodule update --init --recursive
 ```
 
@@ -22,6 +25,8 @@ source prelaunch.sh
 
 After launching, new terminal windows should open for logging, keyboard input control, Mujoco simulation.
 The robot should appear in the Mujoco window.
+
+![Go2 spawning in MuJoCo](assets/go2_mujoco_spawn.png)
 
 ## Requirements
 
@@ -53,7 +58,7 @@ Launch utilities for starting the robot control system.
 
 ## Scripts
 
-### utils
+### `utils/`
 
 provide a tool for processing the robot state data 
 
