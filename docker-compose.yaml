@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  go2_ros2_toolkit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: go2_ros2_toolkit
+    container_name: go2_ros2_toolkit
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - .:/workspace  # Your source code
+    network_mode: host
+    privileged: true
+    stdin_open: true
+    tty: true
