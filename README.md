@@ -22,6 +22,18 @@ In the project root directory (`go2_ros2_control_sim`)
 make run
 ```
 
+Or, you can choose a desired type of controller by passing it as an argument `CTRL` like:
+
+```bash
+make run CTRL=unitree_guide
+``` 
+
+or 
+
+```bash
+make run CTRL=rl
+``` 
+
 After launching, new terminal windows should open for logging, keyboard input control, Mujoco simulation.
 A Mujoco simulation window should open for visualizing the robot.
 
